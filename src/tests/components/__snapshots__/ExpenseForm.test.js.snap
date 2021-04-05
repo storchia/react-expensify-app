@@ -6,7 +6,7 @@ exports[`Should render ExpenseForm correctly 1`] = `
     onSubmit={[Function]}
   >
     <input
-      autofocus={true}
+      autoFocus={true}
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -112,7 +112,7 @@ exports[`Should render ExpenseForm correctly with Expense data 1`] = `
     onSubmit={[Function]}
   >
     <input
-      autofocus={true}
+      autoFocus={true}
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -215,13 +215,13 @@ exports[`Should render ExpenseForm correctly with Expense data 1`] = `
 exports[`Should render error for invalid form submission 1`] = `
 <div>
   <p>
-    Please provide description and amount!
+    Please provide description and amount.
   </p>
   <form
     onSubmit={[Function]}
   >
     <input
-      autofocus={true}
+      autoFocus={true}
       onChange={[Function]}
       placeholder="Description"
       type="text"
