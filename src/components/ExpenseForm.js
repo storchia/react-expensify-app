@@ -2,11 +2,10 @@ import React from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 
-const now = moment();
-
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       description: props.expense ? props.expense.description : "",
       note: props.expense ? props.expense.note : "",
@@ -26,21 +25,25 @@ export default class ExpenseForm extends React.Component {
   };
   onAmountChange = e => {
     const amount = e.target.value;
+
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   };
   onDateChange = createdAt => {
-    this.setState(() => ({ createdAt }));
+    if (createdAt) {
+      this.setState(() => ({ createdAt }));
+    }
   };
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
   };
   onSubmit = e => {
     e.preventDefault();
+
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({
-        error: "Please provide description and amount!"
+        error: "Please provide description and amount."
       }));
     } else {
       this.setState(() => ({ error: "" }));
@@ -60,7 +63,7 @@ export default class ExpenseForm extends React.Component {
           <input
             type="text"
             placeholder="Description"
-            autofocus
+            autoFocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
           />
@@ -71,10 +74,10 @@ export default class ExpenseForm extends React.Component {
             onChange={this.onAmountChange}
           />
           <SingleDatePicker
-            date={this.state.createdAt} // momentPropTypes.momentObj or null
-            onDateChange={this.onDateChange} // PropTypes.func.isRequired
-            focused={this.state.calendarFocused} // PropTypes.bool
-            onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
+            date={this.state.createdAt}
+            onDateChange={this.onDateChange}
+            focused={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
